@@ -1,5 +1,7 @@
 <component name="CopyrightManager">
-  <settings default="">
-    <module2copyright />
+  <settings default="Coursera">
+    <module2copyright>
+      <element module="All" copyright="Coursera" />
+    </module2copyright>
   </settings>
 </component>
