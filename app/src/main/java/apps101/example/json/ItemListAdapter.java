@@ -49,7 +49,10 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
         ViewHolder viewHolder;
 
         if (convertView == null) {
+            // inflate the view if it is null
             convertView = mLayoutInflater.inflate(R.layout.row_item, parent, false);
+
+            // store our views in a viewholder because findviewbyid is expensive
             viewHolder = new ViewHolder();
             viewHolder.name = (TextView) convertView.findViewById(R.id.name);
             viewHolder.quantity = (TextView) convertView.findViewById(R.id.quantity);
@@ -57,11 +60,13 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
             viewHolder.weight = (TextView) convertView.findViewById(R.id.weight);
             convertView.setTag(viewHolder);
         } else {
+            // we just saved having to do all our lookups :)
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
         Item item = getItem(position);
         if (item != null) {
+            // set the text in our views
             viewHolder.name.setText(item.getName());
             viewHolder.quantity.setText(String.valueOf(item.getQuantity()));
             viewHolder.price.setText(item.getPrice());
@@ -80,6 +85,7 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
         }
     }
 
+    // this class holds our lookups
     private class ViewHolder {
         private TextView name;
         private TextView quantity;
